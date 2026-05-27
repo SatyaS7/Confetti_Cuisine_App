@@ -1,0 +1,27 @@
+<h1>System User Dashboard</h1>
+<table border="1" style="width:100%; text-align: left;">
+    <tr>
+        <th>Name</th> <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <% users.forEach(user => { %>
+        <tr>
+            <td><a href="/users/<%= user._id %>"><%= user.name.first %> <%= user.name.last %></a></td>
+            <td><%= user.email %></td>
+            <td>
+                <a href="/users/<%= user._id %>/edit">Edit</a> | 
+                <a href="/users/<%= user._id %>/delete?_method=DELETE" onclick="return confirm('Delete this profile permanently?')">Delete</a>
+            </td>
+        </tr>
+    <% }); %>
+</table>
+<p><a href="/users/new">Add a New User</a></p>
+<% if (flashMessages.success) { %>
+  <div style="background: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px;">
+    <%= flashMessages.success %>
+  </div>
+<% } else if (flashMessages.error) { %>
+  <div style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px;">
+    <%= flashMessages.error %>
+  </div>
+<% } %>

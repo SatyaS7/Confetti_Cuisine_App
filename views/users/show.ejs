@@ -1,0 +1,9 @@
+<h1>User Account Profile for: <%= user.fullName %></h1>
+<div style="border:1px solid #aaa; padding: 20px;">
+    <p><strong>First Name:</strong> <%= user.name.first %></p>
+    <p><strong>Last Name:</strong> <%= user.name.last %></p>
+    <p><strong>Email Address:</strong> <%= user.email %></p>
+    <p><strong>Account ID:</strong> <%= user._id %></p>
+</div>
+<br>
+<a href="/users/<%= user._id %>/edit">Modify Details</a> | <a href="/users">Back to Dashboard</a>

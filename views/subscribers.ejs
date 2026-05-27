@@ -1,0 +1,9 @@
+<h1>Active Administrative Subscriber List</h1>
+<% subscribers.forEach(s => { %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+        <p><strong>Name:</strong> <%= s.name %></p>
+        <p><strong>Email:</strong> <%= s.email %></p>
+        <p><strong>ZIP Code:</strong> <%= s.zipCode %></p>
+    </div>
+<% }); %>
+<p><a href="/contact">Add Another Subscriber</a></p>
