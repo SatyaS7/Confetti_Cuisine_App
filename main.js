@@ -94,3 +94,7 @@ app.use((error, req, res, next) => {
     console.log(error.stack);
     res.status(500).send(error.message);
 });
+
+// Add this near the bottom of main.js to intercept requests with your new modular pipeline router
+const routes = require("./routes/index");
+app.use("/", routes);
