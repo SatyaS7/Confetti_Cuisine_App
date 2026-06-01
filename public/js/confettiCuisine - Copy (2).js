@@ -1,13 +1,12 @@
 // public/js/confettiCuisine.js
 $(document).ready(() => {
-    // 1. UNIT 6: COURSE MODAL AJAX ENDPOINT
+    // Listen for a click event on an HTML modal button element
     $("#modal-button").click(() => {
         $(".modal-body").html(''); // Clear container from stale data items
         
         // Execute an asynchronous background network fetch to your live JSON stream API
         $.get("/api/courses", (data) => {
             data.forEach((course) => {
-                // 🌟 FIX 1: Clean, unescaped modern template literals to safely print attributes
                 $(".modal-body").append(`
                     <div class="course-item" style="padding: 10px; border-bottom: 1px solid #eee;">
                         <span class="course-title" style="font-weight: bold;">${course.title}</span>
@@ -18,8 +17,7 @@ $(document).ready(() => {
         });
     });
 	
-    // 2. UNIT 7: WEBSOCKETS REAL-TIME GROUP CHAT SYSTEM
-    // Initialize the WebSocket handshake pipeline link
+	// Initialize the WebSocket handshake pipeline link
     const socket = io();
 
     // Capture form post actions and emit structured payloads to the server backend
@@ -46,7 +44,7 @@ $(document).ready(() => {
     // Handle single real-time message arrivals
     socket.on("message", (message) => {
         displayMessage(message);
-        // UI Animation: Scroll smoothly down to the latest message
+        // UI Animation: Bounce or highlight an element to let people know a message came in!
         $("#chat-box").animate({ scrollTop: $("#chat-box")[0].scrollHeight }, 200);
     });
 
@@ -58,7 +56,6 @@ $(document).ready(() => {
 
     // Shared UI painter helper function
     function displayMessage(msg) {
-        // 🌟 FIX 2: Perfectly balanced template string rendering clean, aligned nested elements
         $("#chat").append($("<li>").html(`
             <div style="margin-bottom: 8px;">
                 <span style="color: #007bff; font-weight: bold;">${msg.userName}:</span> 

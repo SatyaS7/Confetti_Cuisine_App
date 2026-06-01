@@ -1,0 +1,13 @@
+<h1>Confetti Cuisine Real-Time Culinary Chat</h1>
+<div id="chat-box" style="border: 1px solid #aaa; height: 300px; overflow-y: scroll; padding: 15px; margin-bottom: 15px; background: #f9f9f9;">
+    <ul id="chat" style="list-style-type: none; padding: 0;"></ul>
+</div>
+<form id="chatForm">
+    <input type="hidden" id="chat-user-id" value="<%= currentUser ? currentUser._id : '' %>">
+    <input type="hidden" id="chat-user-name" value="<%= currentUser ? currentUser.fullName : 'Anonymous' %>">
+    <input type="text" id="chat-input" placeholder="Type a cooking question..." style="width: 70%; padding: 8px;" required>
+    <button type="submit" style="padding: 8px 15px;">Send</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/socket.io/socket.io.js"></script> <script src="/js/confettiCuisine.js"></script>

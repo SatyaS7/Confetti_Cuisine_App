@@ -88,25 +88,13 @@ app.get("/users/:id/edit", usersController.edit);            // Update Form View
 app.put("/users/:id/update", usersController.update);        // Update Action Execution
 app.delete("/users/:id/delete", usersController.delete);    // Delete Action Execution
 
-const server = app.listen(app.get("port"), () => {
-    console.log(`Application running at http://localhost:${app.get("port")}`);
-});
-
-// 2. Initialize Socket.io by passing it your running server instance
-const io = require("socket.io")(server);
+app.listen(app.get("port"), () => console.log(`CRUD Platform cooking at http://localhost:${app.get("port")}`));
 
 app.use((error, req, res, next) => {
     console.log(error.stack);
     res.status(500).send(error.message);
 });
 
-// 3. Import your chat controller asset (we will build this next)
-const chatController = require("./controllers/chatController")(io);
-
 // Add this near the bottom of main.js to intercept requests with your new modular pipeline router
 const routes = require("./routes/index");
 app.use("/", routes);
-
-app.get("/chat", (req, res) => {
-    res.render("chat");
-});
