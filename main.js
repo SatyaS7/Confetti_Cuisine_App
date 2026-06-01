@@ -12,7 +12,8 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const User = require("./models/user");
 
-mongoose.connect("mongodb://localhost:27017/recipe_db");
+const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/recipe_db";
+mongoose.connect(dbURI);
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3003);
 
